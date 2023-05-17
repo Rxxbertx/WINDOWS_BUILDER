@@ -24,6 +24,8 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem menuSalir;
 	private JMenuItem clientesBaja;
 	private JMenuItem clientesConsulta;
+	
+
 	private JMenu menuProductos;
 	private JMenuItem productosAlta;
 	private JMenuItem productosBaja;
@@ -164,6 +166,10 @@ public class VentanaPrincipal extends JFrame {
 
 	public JMenuItem getClientesBaja() {
 		return clientesBaja;
+	}
+	
+	public JMenuItem getClientesConsulta() {
+		return clientesConsulta;
 	}
 	
 }

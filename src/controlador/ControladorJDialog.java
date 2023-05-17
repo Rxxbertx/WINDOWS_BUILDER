@@ -46,7 +46,10 @@ public class ControladorJDialog implements ActionListener {
 			} else {
 				Cliente cliente = new Cliente(dialogoAltaCliente.getCampoNombre().getText(),
 						dialogoAltaCliente.getCampoDni().getText(), dialogoAltaCliente.getCampoTelefono().getText());
-				modeloCliente.añadirCliente(cliente);
+
+				modeloCliente temp = new modeloCliente();
+				temp.añadirCliente(cliente);
+				dialogoAltaCliente.dispose();
 
 			}
 

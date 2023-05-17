@@ -19,6 +19,8 @@ public class ControladorJFrame implements ActionListener {
 
 		// sumar listener
 		ventana.getClientesAlta().addActionListener(this);
+		ventana.getClientesConsulta().addActionListener(this);
+		
 		ventana.getClientesBaja().addActionListener(this);
 
 	}
@@ -36,11 +38,20 @@ public class ControladorJFrame implements ActionListener {
 				System.out.println(e2.getMessage());
 			}
 			
-			System.out.println(modeloCliente.getListaClientes().toString());
+			
 		}
 		if (e.getSource()==ventana.getClientesBaja()) {
 			System.out.println("ahdofklasdfj");
 		}
+		
+		
+		
+		if (e.getSource().equals(ventana.getClientesConsulta())) {
+			
+			new ControladorConsultaClientes(ventana);
+			
+		}
+		
 
 	}
 
