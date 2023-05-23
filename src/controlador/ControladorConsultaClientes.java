@@ -18,16 +18,16 @@ import vista.VentanaPrincipal;
 public class ControladorConsultaClientes implements ListSelectionListener, ActionListener {
 
 	private ConsultaCliente consultaCliente;
-	private modeloCliente temp = new modeloCliente();
+	private modeloCliente modCliente = new modeloCliente();
 
 	public ControladorConsultaClientes(VentanaPrincipal ventana) {
 
-		if (temp.getListaClientes().size() == 0) {
+		if (modCliente.getListaClientes().size() == 0) {
 			JOptionPane.showMessageDialog(ventana, "NO TIENES CLIENTES, AÑADE UNO");
 		} else {
 
 			consultaCliente = new ConsultaCliente();
-			consultaCliente.getListmodel().addAll(extraerNombreClientes());
+			consultaCliente.getListmodel().addAll(modCliente.extraerNombreClientes());
 			consultaCliente.getList().addListSelectionListener(this);
 			consultaCliente.getOkButton().addActionListener(this);
 			consultaCliente.setModalityType(ModalityType.APPLICATION_MODAL);
@@ -38,24 +38,15 @@ public class ControladorConsultaClientes implements ListSelectionListener, Actio
 
 	}
 
-	public List<String> extraerNombreClientes() {
-		List<String> clientesNombre = new ArrayList<>();
-
-		for (Cliente cliente : temp.getListaClientes()) {
-			clientesNombre.add(cliente.getNombre());
-		}
-		return clientesNombre;
-	}
-
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 
 		if (e.getSource() == consultaCliente.getList()) {
 			int i = consultaCliente.getList().getSelectedIndex();
-			consultaCliente.getDni().setText(temp.getListaClientes().get(i).getDni());
-			consultaCliente.getNombre().setText(temp.getListaClientes().get(i).getNombre());
-			consultaCliente.getTelefono().setText(temp.getListaClientes().get(i).getTelefono());
-			//ez pz 
+			consultaCliente.getDni().setText(modCliente.getListaClientes().get(i).getDni());
+			consultaCliente.getNombre().setText(modCliente.getListaClientes().get(i).getNombre());
+			consultaCliente.getTelefono().setText(modCliente.getListaClientes().get(i).getTelefono());
+			// ez pz
 		}
 
 	}

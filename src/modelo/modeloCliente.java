@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class modeloCliente {
 
@@ -18,6 +19,15 @@ public class modeloCliente {
 
 	public  ArrayList<Cliente> getListaClientes() {
 		return listaClientes;
+	}
+	
+	public List<String> extraerNombreClientes() {
+		List<String> clientesNombre = new ArrayList<>();
+
+		for (Cliente cliente : getListaClientes()) {
+			clientesNombre.add(cliente.getNombre());
+		}
+		return clientesNombre;
 	}
 
 }
