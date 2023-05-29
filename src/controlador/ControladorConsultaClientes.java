@@ -30,6 +30,7 @@ public class ControladorConsultaClientes implements ListSelectionListener, Actio
 			consultaCliente.getListmodel().addAll(modCliente.extraerNombreClientes());
 			consultaCliente.getList().addListSelectionListener(this);
 			consultaCliente.getOkButton().addActionListener(this);
+			consultaCliente.getBtnBorrar().addActionListener(this);
 			consultaCliente.setModalityType(ModalityType.APPLICATION_MODAL);
 			consultaCliente.setLocationRelativeTo(ventana);
 			consultaCliente.setVisible(true);
@@ -42,18 +43,46 @@ public class ControladorConsultaClientes implements ListSelectionListener, Actio
 	public void valueChanged(ListSelectionEvent e) {
 
 		if (e.getSource() == consultaCliente.getList()) {
-			int i = consultaCliente.getList().getSelectedIndex();
-			consultaCliente.getDni().setText(modCliente.getListaClientes().get(i).getDni());
-			consultaCliente.getNombre().setText(modCliente.getListaClientes().get(i).getNombre());
-			consultaCliente.getTelefono().setText(modCliente.getListaClientes().get(i).getTelefono());
-			// ez pz
+
+			if (consultaCliente.getListmodel().isEmpty()) {
+
+				consultaCliente.getDni().setText("");
+				consultaCliente.getNombre().setText("");
+				consultaCliente.getTelefono().setText("");
+			} else {
+
+				int i = consultaCliente.getList().getSelectedIndex();
+				consultaCliente.getDni().setText(modCliente.getListaClientes().get(i).getDni());
+				consultaCliente.getNombre().setText(modCliente.getListaClientes().get(i).getNombre());
+				consultaCliente.getTelefono().setText(modCliente.getListaClientes().get(i).getTelefono());
+
+			}
+
 		}
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		consultaCliente.dispose();
+
+		if (e.getSource().equals(consultaCliente.getBtnBorrar())) {
+
+			try {
+
+				int i = consultaCliente.getList().getSelectedIndex();
+				modCliente.eliminarCliente(modCliente.getListaClientes().get(i));
+				consultaCliente.getListmodel().clear();
+				consultaCliente.getListmodel().addAll(modCliente.extraerNombreClientes());
+
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+
+		}
+
+		if (e.getSource().equals(consultaCliente.getOkButton())) {
+			consultaCliente.dispose();
+		}
 
 	}
 

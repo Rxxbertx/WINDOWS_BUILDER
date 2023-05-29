@@ -29,6 +29,7 @@ public class ConsultaCliente extends JDialog {
 	private JButton okButton;
 	private DefaultListModel<String> listmodel;
 	private JList list;
+	private JButton btnBorrar;
 
 	/**
 	 * Create the dialog.
@@ -91,6 +92,9 @@ public class ConsultaCliente extends JDialog {
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
+		
+		btnBorrar = new JButton("Borrar");
+		buttonPane.add(btnBorrar);
 
 		okButton = new JButton("OK");
 		okButton.setActionCommand("OK");
@@ -133,6 +137,14 @@ public class ConsultaCliente extends JDialog {
 
 	public void setTelefono(JLabel telefono) {
 		this.telefono = telefono;
+	}
+
+	public JButton getBtnBorrar() {
+		return btnBorrar;
+	}
+
+	public void setBtnBorrar(JButton btnBorrar) {
+		this.btnBorrar = btnBorrar;
 	}
 
 }
