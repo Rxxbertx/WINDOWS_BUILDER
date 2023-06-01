@@ -97,7 +97,7 @@ public class VentanaGestionProductos extends JDialog {
 		
 		JPanel panelinicio = new JPanel();
 		panelinicio.setBackground(Color.DARK_GRAY);
-		panelCard.add(panelinicio, "name_3415568088900");
+		panelCard.add(panelinicio, "panelInicio");
 		panelinicio.setLayout(null);
 		
 		JLabel icono = new JLabel("");
@@ -117,7 +117,7 @@ public class VentanaGestionProductos extends JDialog {
 		
 		JPanel panelAlta = new JPanel();
 		panelAlta.setBackground(Color.DARK_GRAY);
-		panelCard.add(panelAlta, "name_3440026551500");
+		panelCard.add(panelAlta, "panelAlta");
 		panelAlta.setLayout(null);
 		
 		JLabel lblid = new JLabel("Id");
@@ -211,7 +211,7 @@ public class VentanaGestionProductos extends JDialog {
 		
 		JPanel panelBaja = new JPanel();
 		panelBaja.setBackground(Color.DARK_GRAY);
-		panelCard.add(panelBaja, "name_3442056149600");
+		panelCard.add(panelBaja, "panelBaja");
 		panelBaja.setLayout(null);
 		
 		JComboBox comboBoxProductos = new JComboBox();
@@ -282,7 +282,7 @@ public class VentanaGestionProductos extends JDialog {
 		
 		JPanel panelConsulta = new JPanel();
 		panelConsulta.setBackground(Color.DARK_GRAY);
-		panelCard.add(panelConsulta, "name_6475241699600");
+		panelCard.add(panelConsulta, "panelConsulta");
 		panelConsulta.setLayout(null);
 		
 		JLabel lblCategoria3 = new JLabel("CATEGORIA");
