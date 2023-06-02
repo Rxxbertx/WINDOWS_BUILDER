@@ -167,7 +167,7 @@ public class ControladorGestionProductos implements ActionListener, ItemListener
 				ventanaProducto.getDatosCombo().addElement(ventanaProducto.getTextFieldNombre().getText() + " ("
 						+ ventanaProducto.getTextFieldId().getText() + ")");
 
-				limpiarCampos("panelInicio");
+				limpiarCampos("panelAlta");
 
 				JOptionPane.showMessageDialog(ventanaProducto, "Se ha introducido el producto");
 
