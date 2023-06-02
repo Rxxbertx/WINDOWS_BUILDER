@@ -24,12 +24,9 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem menuSalir;
 	private JMenuItem clientesBaja;
 	private JMenuItem clientesConsulta;
-	
 
 	private JMenu menuProductos;
-	private JMenuItem productosAlta;
-	private JMenuItem productosBaja;
-	private JMenuItem productosConsulta;
+	private JMenuItem productosGestion;
 
 	private JToolBar toolBar;
 	private JButton clientesAlta_1;
@@ -140,20 +137,11 @@ public class VentanaPrincipal extends JFrame {
 		menuProductos.setFont(new Font("SansSerif", Font.BOLD | Font.ITALIC, 15));
 		menuBar.add(menuProductos);
 
-		productosAlta = new JMenuItem("Alta");
-		productosAlta
+		productosGestion = new JMenuItem("Gestion Producto");
+		productosGestion
 				.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-producto-nuevo-30.png")));
-		menuProductos.add(productosAlta);
+		menuProductos.add(productosGestion);
 
-		productosBaja = new JMenuItem("Baja");
-		productosBaja
-				.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-sin-existencias-30.png")));
-		menuProductos.add(productosBaja);
-
-		productosConsulta = new JMenuItem("Consulta");
-		productosConsulta
-				.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-caja-llena-30.png")));
-		menuProductos.add(productosConsulta);
 	}
 
 	public JPanel getPanelPrimario() {
@@ -167,9 +155,16 @@ public class VentanaPrincipal extends JFrame {
 	public JMenuItem getClientesBaja() {
 		return clientesBaja;
 	}
-	
+
 	public JMenuItem getClientesConsulta() {
 		return clientesConsulta;
 	}
-	
+
+	/**
+	 * @return the productosGestion
+	 */
+	public JMenuItem getProductosGestion() {
+		return productosGestion;
+	}
+
 }

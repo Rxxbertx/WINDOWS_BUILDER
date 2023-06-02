@@ -3,8 +3,6 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.modeloCliente;
-
 import vista.VentanaPrincipal;
 
 public class ControladorJFrame implements ActionListener {
@@ -20,8 +18,9 @@ public class ControladorJFrame implements ActionListener {
 		// sumar listener
 		ventana.getClientesAlta().addActionListener(this);
 		ventana.getClientesConsulta().addActionListener(this);
-		
 		ventana.getClientesBaja().addActionListener(this);
+		ventana.getProductosGestion().addActionListener(this);
+		ventana.setLocationRelativeTo(null);
 
 	}
 
@@ -33,25 +32,27 @@ public class ControladorJFrame implements ActionListener {
 			// dialogoAltaCliente.setVisible(true);
 			// dialogoAltaCliente.setLocationRelativeTo(ventana);
 			try {
-				 new ControladorJDialog(ventana);
+				new ControladorJDialog(ventana);
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
 			}
-			
-			
+
 		}
-		if (e.getSource()==ventana.getClientesBaja()) {
+		if (e.getSource() == ventana.getClientesBaja()) {
 			System.out.println("ahdofklasdfj");
 		}
-		
-		
-		
+
 		if (e.getSource().equals(ventana.getClientesConsulta())) {
-			
+
 			new ControladorConsultaClientes(ventana);
-			
+
 		}
-		
+
+		if (e.getSource().equals(ventana.getProductosGestion())) {
+
+			new ControladorGestionProductos(ventana);
+
+		}
 
 	}
 

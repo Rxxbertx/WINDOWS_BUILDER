@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 
 import modelo.Cliente;
-import modelo.modeloCliente;
+import modelo.ModeloCliente;
 import vista.AñadirCliente;
 import vista.VentanaPrincipal;
 
@@ -47,7 +47,7 @@ public class ControladorJDialog implements ActionListener {
 				Cliente cliente = new Cliente(dialogoAltaCliente.getCampoNombre().getText(),
 						dialogoAltaCliente.getCampoDni().getText(), dialogoAltaCliente.getCampoTelefono().getText());
 
-				modeloCliente temp = new modeloCliente();
+				ModeloCliente temp = new ModeloCliente();
 				temp.añadirCliente(cliente);
 				dialogoAltaCliente.dispose();
 
