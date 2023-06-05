@@ -268,6 +268,7 @@ public class VentanaGestionProductos extends JDialog {
 		panelBaja.add(lblCategoria2);
 
 		textFieldId2 = new JTextField();
+		textFieldId2.setEditable(false);
 		textFieldId2.setForeground(Color.WHITE);
 		textFieldId2.setColumns(10);
 		textFieldId2.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
