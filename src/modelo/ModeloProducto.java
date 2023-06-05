@@ -4,70 +4,71 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+/**
+ * Clase que representa el modelo de datos para los productos.
+ */
 public class ModeloProducto {
 
-	private static HashMap<Integer, Producto> almacenProductos = new HashMap<>();
-	private static String[] categorias = { "Alimentacion", "Drogueria", "Juguetes", "Bebidas" };
+    private static HashMap<Integer, Producto> almacenProductos = new HashMap<>();
+    private static String[] categorias = { "Alimentacion", "Drogueria", "Juguetes", "Bebidas" };
 
-	public ModeloProducto() {
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Constructor de la clase ModeloProducto.
+     */
+    public ModeloProducto() {
+        // TODO: Implementar constructor si es necesario
+    }
 
-	public void añadirProducto(Producto producto) {
+    /**
+     * Añade un producto al almacenProductos.
+     * @param producto El producto a añadir.
+     */
+    public void añadirProducto(Producto producto) {
+        almacenProductos.put(producto.getId(), producto);
+    }
 
-		almacenProductos.put(producto.getId(), producto);
+    /**
+     * Elimina un producto del almacenProductos.
+     * @param producto El producto a eliminar.
+     */
+    public void borrarProducto(Producto producto) {
+        almacenProductos.remove(producto.getId());
+    }
 
-	}
+    /**
+     * Obtiene el almacen de productos.
+     * @return El almacen de productos.
+     */
+    public static HashMap<Integer, Producto> getAlmacenProductos() {
+        return almacenProductos;
+    }
 
-	public void modificarProducto(Producto producto, Producto productoViejo) {
+    /**
+     * Obtiene las categorías de productos.
+     * @return Las categorías de productos.
+     */
+    public static String[] getCategorias() {
+        return categorias;
+    }
 
-		if (producto.getId() == productoViejo.getId()) {
+    /**
+     * Establece las categorías de productos.
+     * @param categorias Las categorías de productos a establecer.
+     */
+    public static void setCategorias(String[] categorias) {
+        ModeloProducto.categorias = categorias;
+    }
 
-			almacenProductos.replace(producto.getId(), producto);
-		} else {
-			almacenProductos.remove(productoViejo.getId());
-			almacenProductos.put(producto.getId(), producto);
-		}
-
-	}
-
-	public void borrarProducto(Producto producto) {
-		almacenProductos.remove(producto.getId());
-	}
-
-	/**
-	 * @return the almacenProductos
-	 */
-	public static HashMap<Integer, Producto> getAlmacenProductos() {
-		return almacenProductos;
-	}
-
-	/**
-	 * @return the categorias
-	 */
-	public static String[] getCategorias() {
-		return categorias;
-	}
-
-	/**
-	 * @param categorias the categorias to set
-	 */
-	public static void setCategorias(String[] categorias) {
-		ModeloProducto.categorias = categorias;
-	}
-
-	public ArrayList<String> nombreProductos() {
-
-		ArrayList<String> nombres = new ArrayList<>();
-
-		for (Entry<Integer, Producto> entry : almacenProductos.entrySet()) {
-
-			nombres.add(entry.getValue().getNombre() + " (" + entry.getKey() + ")");
-
-		}
-
-		return nombres;
-
-	}
-
+    /**
+     * Obtiene los nombres de los productos en el almacen.
+     * @return Una lista de nombres de productos.
+     */
+    public ArrayList<String> nombreProductos() {
+        ArrayList<String> nombres = new ArrayList<>();
+        for (Entry<Integer, Producto> entry : almacenProductos.entrySet()) {
+            nombres.add(entry.getValue().getNombre() + " (" + entry.getKey() + ")");
+        }
+        return nombres;
+    }
 }
+
