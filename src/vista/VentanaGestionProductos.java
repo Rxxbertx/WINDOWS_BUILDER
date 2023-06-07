@@ -5,15 +5,21 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.text.NumberFormat;
+
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ListDataListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JRadioButton;
@@ -60,6 +66,12 @@ public class VentanaGestionProductos extends JDialog {
 	private JLabel lblCantidad2;
 	private JTextField textFieldPrecio2;
 	private JTextField textFieldCantidad2;
+	private JComboBox<String> comboBoxCategoriaConsulta;
+	private JScrollPane scrollPane;
+	private DefaultTableModel modelTabla = new DefaultTableModel();
+	private JLabel lblStock;
+	private JFormattedTextField textFieldStock;
+	private JLabel lblCategoria3;
 
 	public VentanaGestionProductos() {
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -310,19 +322,19 @@ public class VentanaGestionProductos extends JDialog {
 		btnSalir2.setFont(new Font("SansSerif", Font.BOLD, 13));
 		btnSalir2.setBounds(264, 299, 90, 28);
 		panelBaja.add(btnSalir2);
-		
+
 		lblPrecio2 = new JLabel("Precio");
 		lblPrecio2.setForeground(Color.WHITE);
 		lblPrecio2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		lblPrecio2.setBounds(86, 215, 75, 16);
 		panelBaja.add(lblPrecio2);
-		
+
 		lblCantidad2 = new JLabel("Cantidad");
 		lblCantidad2.setForeground(Color.WHITE);
 		lblCantidad2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		lblCantidad2.setBounds(86, 253, 75, 16);
 		panelBaja.add(lblCantidad2);
-		
+
 		textFieldPrecio2 = new JTextField();
 		textFieldPrecio2.setForeground(Color.WHITE);
 		textFieldPrecio2.setColumns(10);
@@ -330,7 +342,7 @@ public class VentanaGestionProductos extends JDialog {
 		textFieldPrecio2.setBackground(Color.DARK_GRAY);
 		textFieldPrecio2.setBounds(176, 215, 122, 16);
 		panelBaja.add(textFieldPrecio2);
-		
+
 		textFieldCantidad2 = new JTextField();
 		textFieldCantidad2.setForeground(Color.WHITE);
 		textFieldCantidad2.setColumns(10);
@@ -344,24 +356,42 @@ public class VentanaGestionProductos extends JDialog {
 		panelCard.add(panelConsulta, "panelConsulta");
 		panelConsulta.setLayout(null);
 
-		JLabel lblCategoria3 = new JLabel("CATEGORIA");
+		lblCategoria3 = new JLabel("CATEGORIA");
 		lblCategoria3.setFont(new Font("SansSerif", Font.BOLD, 13));
 		lblCategoria3.setForeground(Color.WHITE);
 		lblCategoria3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCategoria3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblCategoria3.setBounds(151, 32, 82, 16);
 		panelConsulta.add(lblCategoria3);
+		
+		lblStock = new JLabel("STOCK");
+		lblStock.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStock.setForeground(Color.WHITE);
+		lblStock.setFont(new Font("SansSerif", Font.BOLD, 13));
+		lblStock.setAlignmentX(0.5f);
+		lblStock.setBounds(151, 32, 82, 16);
+		panelConsulta.add(lblStock);
+		
+		textFieldStock = new JFormattedTextField(new NumberFormatter(NumberFormat.getNumberInstance()));
+		
+		textFieldStock.setForeground(Color.WHITE);
+		textFieldStock.setColumns(10);
+		textFieldStock.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		textFieldStock.setBackground(Color.DARK_GRAY);
+		textFieldStock.setBounds(131, 57, 122, 16);
+		panelConsulta.add(textFieldStock);
 
-		JComboBox comboBoxCategoriaConsulta = new JComboBox();
+		comboBoxCategoriaConsulta = new JComboBox();
 		comboBoxCategoriaConsulta.setBounds(95, 52, 193, 26);
 		panelConsulta.add(comboBoxCategoriaConsulta);
 
-		table = new JTable();
-
-		JScrollPane scrollPane = new JScrollPane(table);
+		table = new JTable(modelTabla);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(26, 91, 331, 179);
+	
 		panelConsulta.add(scrollPane);
-
+		scrollPane.setViewportView(table);
 		btnSalir3 = new JButton("Salir");
 		btnSalir3.setForeground(Color.WHITE);
 		btnSalir3.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -578,5 +608,53 @@ public class VentanaGestionProductos extends JDialog {
 	 */
 	public JTextField getTextFieldCantidad2() {
 		return textFieldCantidad2;
+	}
+
+	public JComboBox getComboBoxCategoriaConsulta() {
+		return comboBoxCategoriaConsulta;
+	}
+
+	public void setComboBoxCategoriaConsulta(JComboBox comboBoxCategoriaConsulta) {
+		this.comboBoxCategoriaConsulta = comboBoxCategoriaConsulta;
+	}
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	public DefaultTableModel getModelTabla() {
+		return modelTabla;
+	}
+
+	public void setModelTabla(DefaultTableModel modelTabla) {
+		this.modelTabla = modelTabla;
+	}
+
+	public JLabel getLblStock() {
+		return lblStock;
+	}
+
+	public void setLblStock(JLabel lblStock) {
+		this.lblStock = lblStock;
+	}
+
+	public JFormattedTextField getTextFieldStock() {
+		return textFieldStock;
+	}
+
+	public void setTextFieldStock(JFormattedTextField textFieldStock) {
+		this.textFieldStock = textFieldStock;
+	}
+
+	public JLabel getLblCategoria3() {
+		return lblCategoria3;
+	}
+
+	public void setLblCategoria3(JLabel lblCategoria3) {
+		this.lblCategoria3 = lblCategoria3;
 	}
 }
